@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Clock Spins Away</title>
+<style>
+canvas { border:1px solid black; }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
+<script>
+ 
+var canvas;
+var ctx;
+var i = 0;  
+
+function draw() {
+
+    var sprite = document.getElementById('Clock');
+ 
+    ctx.drawImage(sprite,i*300,0,300,200,0,0,600,400);
+    
+    requestAnimationFrame(draw);
+    }
+
+function update() {
+    i = (i+1)%15;
+}
+function init() {
+    canvas = document.getElementById('myCanvas');
+    ctx = canvas.getContext('2d');
+   
+    window.setInterval(update,250);
+    requestAnimationFrame(draw);
+}
+
+window.onload = init;
+</script>
+</head>
+
+<body>
+<canvas id="myCanvas" width="600" height="400">
+</canvas>
+<img id="Clock" src="img/ClockSheet.png" class="center" style="display:none">
+<br />
+<div class="info-text">
+	Times goes on!
+			
+	</div>
+</body>
+
+</html>
